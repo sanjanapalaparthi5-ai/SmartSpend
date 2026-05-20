@@ -3,206 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartSpend Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SmartSpend Login</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#0f172a;
+        }
+
+        .login-box{
+            width:350px;
+            background:#1e293b;
+            padding:40px;
+            border-radius:20px;
+            text-align:center;
+            box-shadow:0 0 20px #38bdf8;
+        }
+
+        .login-box h1{
+            color:#38bdf8;
+            margin-bottom:30px;
+        }
+
+        .login-box input{
+            width:100%;
+            padding:15px;
+            margin:10px 0;
+            border:none;
+            border-radius:10px;
+            background:#0f172a;
+            color:white;
+        }
+
+        .login-box button{
+            width:100%;
+            padding:15px;
+            margin-top:20px;
+            border:none;
+            border-radius:10px;
+            background:#38bdf8;
+            color:black;
+            font-weight:bold;
+            cursor:pointer;
+        }
+
+    </style>
+
 </head>
 <body>
 
-<div class="sidebar" id="sidebar">
+<div class="login-box">
 
-    <h2>💰 SmartSpend</h2>
+    <h1>💰 SmartSpend</h1>
 
-    <ul>
-        <li onclick="showSection('dashboard')">🏠 Dashboard</li>
-        <li onclick="showSection('expenses')">📊 Expenses</li>
-        <li onclick="showSection('budget')">💵 Budget</li>
-        <li onclick="showSection('categories')">📁 Categories</li>
-        <li onclick="showSection('about')">ℹ️ About</li>
-    </ul>
+    <input type="text" placeholder="Enter Username">
+
+    <input type="password" placeholder="Enter Password">
+
+    <button onclick="login()">Login</button>
 
 </div>
 
-<div class="main">
+<script>
 
-    <div class="header">
+function login(){
 
-        <div>
-            <span class="menu-btn" onclick="toggleMenu()">☰</span>
+    window.location.href = "dashboard.html";
+}
 
-            <h1>Welcome Back, Sanjana 👋</h1>
-
-            <p id="currentDate"></p>
-        </div>
-
-        <button class="theme-btn">SmartSpend DBMS</button>
-
-    </div>
-
-    <!-- DASHBOARD -->
-
-    <div id="dashboard" class="section">
-
-        <div class="cards">
-
-            <div class="card">
-                <h2>₹ 5000</h2>
-                <p>Total Budget</p>
-            </div>
-
-            <div class="card">
-                <h2 id="totalExpenseCard">₹ 2350</h2>
-                <p>Total Expenses</p>
-            </div>
-
-            <div class="card">
-                <h2 id="remainingBalance">₹ 2650</h2>
-                <p>Remaining Balance</p>
-            </div>
-
-            <div class="card">
-                <h2>Food</h2>
-                <p>Highest Spending</p>
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- EXPENSES -->
-
-    <div id="expenses" class="section hidden">
-
-        <h1>📊 Expenses</h1>
-
-        <div class="expense-form">
-
-            <input type="text" id="expenseName" placeholder="Expense Name">
-
-            <input type="number" id="expenseAmount" placeholder="Amount">
-
-            <select id="expenseCategory">
-
-                <option>Food</option>
-                <option>Travel</option>
-                <option>Shopping</option>
-                <option>Bills</option>
-
-            </select>
-
-            <button onclick="addExpense()">Add Expense</button>
-
-        </div>
-
-        <table id="expenseTable">
-
-            <tr>
-                <th>Expense</th>
-                <th>Category</th>
-                <th>Amount</th>
-            </tr>
-
-        </table>
-
-    </div>
-
-    <!-- BUDGET -->
-
-    <div id="budget" class="section hidden">
-
-        <h1>💵 Budget Details</h1>
-
-        <div class="budget-box">
-            <p>Total Budget : ₹5000</p>
-            <p>Total Expenses : ₹2350</p>
-            <p>Remaining Balance : ₹2650</p>
-        </div>
-
-    </div>
-
-    <!-- CATEGORIES -->
-
-    <div id="categories" class="section hidden">
-
-        <h1>📁 Categories</h1>
-
-        <div class="cards">
-
-            <div class="card">
-                <h2>Food</h2>
-                <p>₹1200</p>
-            </div>
-
-            <div class="card">
-                <h2>Travel</h2>
-                <p>₹450</p>
-            </div>
-
-            <div class="card">
-                <h2>Shopping</h2>
-                <p>₹500</p>
-            </div>
-
-            <div class="card">
-                <h2>Bills</h2>
-                <p>₹200</p>
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- ABOUT -->
-
-    <div id="about" class="section hidden">
-
-        <h1>ℹ️ About SmartSpend</h1>
-
-        <div class="about-box">
-
-            <p>
-                SmartSpend is a Student Expense Tracker System developed to help students efficiently manage daily expenses, monitor spending habits, and maintain monthly budgets using modern web technologies and database management systems.
-            </p>
-
-            <br>
-
-            <p>
-                Technologies Used:
-                HTML, CSS, JavaScript, MySQL, GitHub
-            </p>
-
-        </div>
-
-    </div>
-
-    <!-- PIE CHART -->
-
-    <div class="chart-box">
-
-        <h2>Expense Distribution</h2>
-
-        <canvas id="expenseChart"></canvas>
-
-    </div>
-
-    <!-- BAR GRAPH -->
-
-    <div class="chart-box">
-
-        <h2>Monthly Expense Analysis</h2>
-
-        <canvas id="barChart"></canvas>
-
-    </div>
-
-    <footer>
-        <p>Developed by Ledger Minds | SmartSpend DBMS Project</p>
-    </footer>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script src="script.js"></script>
+</script>
 
 </body>
 </html>
