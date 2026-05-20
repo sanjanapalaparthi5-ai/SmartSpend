@@ -17,6 +17,7 @@ body{
     background:#111827;
     padding:30px;
     position:fixed;
+    transition:0.3s;
 }
 
 .sidebar h2{
@@ -48,8 +49,19 @@ body{
     width:100%;
 }
 
-.section{
-    animation:fade 0.5s;
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.theme-btn{
+    padding:12px 20px;
+    border:none;
+    border-radius:12px;
+    background:#38bdf8;
+    font-weight:bold;
 }
 
 .hidden{
@@ -68,10 +80,37 @@ body{
     padding:30px;
     border-radius:20px;
     border-top:5px solid #38bdf8;
+    transition:0.3s;
 }
 
-.card h2{
-    margin-bottom:10px;
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 20px #38bdf8;
+}
+
+.expense-form{
+    margin-top:30px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.expense-form input,
+.expense-form select{
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#1e293b;
+    color:white;
+}
+
+.expense-form button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    background:#38bdf8;
+    cursor:pointer;
+    font-weight:bold;
 }
 
 table{
@@ -93,7 +132,8 @@ table tr{
 }
 
 .budget-box,
-.about-box{
+.about-box,
+.chart-box{
     margin-top:30px;
     background:#1e293b;
     padding:30px;
@@ -101,14 +141,49 @@ table tr{
     line-height:1.8;
 }
 
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(10px);
+footer{
+    margin-top:40px;
+    text-align:center;
+    padding:20px;
+    background:#111827;
+    border-radius:15px;
+    color:#38bdf8;
+}
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .sidebar{
+        left:-260px;
+        z-index:1000;
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    .sidebar.active{
+        left:0;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .expense-form{
+        flex-direction:column;
     }
 }
