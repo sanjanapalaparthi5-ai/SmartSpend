@@ -47,7 +47,7 @@ body{
     color:black;
 }
 
-/* MAIN CONTENT */
+/* MAIN */
 
 .main{
     margin-left:270px;
@@ -92,7 +92,7 @@ body{
     margin-bottom:10px;
 }
 
-/* HIDDEN SECTION */
+/* HIDDEN */
 
 .hidden{
     display:none;
